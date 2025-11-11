@@ -32,6 +32,10 @@ async function run() {
     app.get('/', (req,res) => {
         res.send('Server is running')
     })
+    app.get('/all-habits' ,async(req,res) => {
+      const result = await habitsCollection.find().toArray();
+      res.send(result)
+    })
     app.get('/latest-fatures',async(req,res) => {
       const result = await habitsCollection.find().limit(6).sort({"created_at" : -1}).toArray();
       res.send(result)
