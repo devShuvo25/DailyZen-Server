@@ -33,17 +33,13 @@ return streak;
 
 }
 
-
-
-
 async function run() {
   try {
-    await client.connect();
+    // await client.connect();
 // all operation are here
     const db = client.db('myDB');
     const habitsCollection = db.collection('HabitsCollection');
     
-
     app.get('/', (req,res) => {
         res.send('Server is running')
     })
@@ -100,7 +96,6 @@ async function run() {
               description:req.body.description,
               category: req.body.category,
               reminderTime: req.body.reminderTime,
-              created_at: new Date().toLocaleString(),
               image: req.body.image,
               user_email: req.body.user_email,
               user_name: req.body.user_name,
@@ -148,8 +143,6 @@ async function run() {
   }
 }
 run().catch(console.dir);
-
-
 app.listen(port, () => {
     console.log("Server is runnig on port:", port)
 })
